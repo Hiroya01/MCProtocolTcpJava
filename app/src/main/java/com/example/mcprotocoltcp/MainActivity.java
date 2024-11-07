@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 cp.recieve_timeout=5000;
                 cp.send_timeout=5000;
                 cp.max_receive_length=256;
-                MCProtocolBinary protocol = new MCProtocolBinary(TcpOrUdp.TCP, cp);
+                MCProtocolBinary protocol = new MCProtocolBinary(TcpOrUdp.UDP, cp);
 
                 if (protocol.connect()) {
                     // 接続成功

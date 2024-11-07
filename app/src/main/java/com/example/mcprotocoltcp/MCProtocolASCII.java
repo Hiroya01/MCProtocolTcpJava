@@ -1,18 +1,15 @@
 package com.example.mcprotocoltcp;
-
-import java.io.IOException;
-//CustomSocketクラスを継承したMCProtocolクラス
-public class MCProtocolBinary extends CustomSocket {
+public class MCProtocolASCII extends CustomSocket {
     public static final int HEADDER_SIZE = 11;
     //コンストラクタ
-    public MCProtocolBinary(TcpOrUdp tcpOrUdp, ConnectionParameter connectionParameter) {
+    public MCProtocolASCII(TcpOrUdp tcpOrUdp, ConnectionParameter connectionParameter) {
         super(tcpOrUdp, connectionParameter);
     }
 
     //正常受信時のデータ数を取得
     @Override
     public int recieve_available(ReadOrWrite readOrWrite, int deviceType, int deviceNumber) {
-       if (readOrWrite == ReadOrWrite.Read) {
+        if (readOrWrite == ReadOrWrite.Read) {
             return HEADDER_SIZE + deviceNumber*2;
         } else {
             return HEADDER_SIZE;

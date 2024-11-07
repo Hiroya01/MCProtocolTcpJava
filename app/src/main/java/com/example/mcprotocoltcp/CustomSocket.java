@@ -8,7 +8,9 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Arrays;
-
+///
+///抽象ソケットクラス
+///
 public abstract class CustomSocket {
     TcpOrUdp tcpOrUdp;
     ConnectionParameter connectionParameter;
@@ -17,9 +19,9 @@ public abstract class CustomSocket {
     InetAddress udpAddress;
     OutputStream tcpout;
     InputStream tcpin;
-
+    //コンストラクタ
     public CustomSocket(TcpOrUdp tcpOrUdp, ConnectionParameter connectionParameter) {
-        this.tcpOrUdp = tcpOrUdp;
+        this.tcpOrUdp = tcpOrUdp;//TCPかUDPか
         this.connectionParameter = connectionParameter;
     }
 
@@ -28,14 +30,14 @@ public abstract class CustomSocket {
         String remote_address = ConnectionParameter.remote_address;
         try {
 
-            if (tcpOrUdp == TcpOrUdp.TCP) {
+            if (tcpOrUdp == TcpOrUdp.TCP) {//TCPの場合
 
                 tcpSocket = new Socket(remote_address, port);
                 tcpout = tcpSocket.getOutputStream();
                 tcpin = tcpSocket.getInputStream();
 
                 return true;
-            } else {
+            } else {//UDPの場合
                 udpSocket = new DatagramSocket();
                 udpAddress = InetAddress.getByName(remote_address);
                 return true;
